@@ -8,7 +8,7 @@ const DIST_PATH = path.resolve(__dirname, './dist');
 module.exports = {
   mode: 'development',
   entry: {
-    app: './src/index.js'
+    app: './src/index.jsx'
   },
   output: {
     filename: "js/bundle.js",
