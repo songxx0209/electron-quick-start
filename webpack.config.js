@@ -6,9 +6,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const DIST_PATH = path.resolve(__dirname, './dist');
 
 module.exports = {
-  mode: 'development',
   entry: {
-    app: './src/index.jsx'
+    app: './src/index.tsx'
   },
   output: {
     filename: "js/bundle.js",
@@ -21,6 +20,10 @@ module.exports = {
     hot:true,
     port: 8080,
   },
+  resolve: {
+    // Add '.ts' and '.tsx' as resolvable extensions.
+    extensions: [".ts", ".tsx", ".js", ".jsx", ".json"]
+  },
   module: {
     rules: [
       {
@@ -29,7 +32,8 @@ module.exports = {
         use: {
           loader: 'babel-loader'
         }
-      }
+      },
+      { test: /\.tsx?$/, loader: "awesome-typescript-loader" },
     ]
   },
   plugins: [

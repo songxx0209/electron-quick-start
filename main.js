@@ -13,7 +13,7 @@ function createWindow () {
   // and load the index.html of the app.
   // mainWindow.loadFile('index.html')
   // 
-  console.log('查看packgage.json', pkg.DEV);
+  console.log('查看packgage.json', pkg);
   mainWindow.loadURL('http://localhost:8080/');
 
   // Open the DevTools.
