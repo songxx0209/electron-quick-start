@@ -34,6 +34,20 @@ module.exports = {
         }
       },
       { test: /\.tsx?$/, loader: "awesome-typescript-loader" },
+
+      // {
+      //   test: /\.scss$/,
+      //   use: [{
+      //     loader: "style-loader"
+      //   }, {
+      //     loader: "css-loader"
+      //   }, {
+      //   loader: "sass-loader",
+      //   }]
+      //   // options: {
+      //   //   includePaths: ["absolute/path/a", "absolute/path/b"]
+      //   // }
+      // }
     ]
   },
   plugins: [
