@@ -54,7 +54,7 @@ module.exports = {
       title: 'Webpack-输出管理'
     }),
     // new CopyWebpackPlugin([
-    //   { from: './renderer.js', to: './js' },
+    //   { from: './js/database.js', to: './js' },
     // ]),
   ],
 };

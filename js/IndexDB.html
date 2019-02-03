@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+
+	<div>
+		<button id="btn_add">增加数据</button>	
+	</div>
+	<div>
+		<button id="btn_del">删除数据</button>	
+	</div>
+	<div>
+		<button id="btn_change">改数据</button>	
+	</div>
+	<div>
+		<button id="btn_check">查看数据</button>	
+	</div>
+    <script>
+    var DB_NAME = 'indexedDB-test',
+        VERSION = 1,
+        db;
+    let addBtn = document.getElementById('btn_add');
+    let delBtn = document.getElementById('btn_del');
+    let changeBtn = document.getElementById('btn_change');
+    let checkBtn = document.getElementById('btn_check');
+
+    openDB(VERSION);
+
+    db = event.target.result;
+	var objectStore;
+	if (!db.objectStoreNames.contains('person')) {
+	    objectStore = db.createObjectStore('person', { keyPath: 'id' });
+	}
+
+    addBtn.onclick = () => {
+    	console.log('slxlxlxlxl');
+    	addMsg();
+    }
+
+    delBtn.onclick = () => {
+    	console.log('we be all right 111');
+    	remove();
+    }
+
+    changeBtn.onclick = () => {
+    	console.log('we be all right');
+    	update();
+    }
+
+    checkBtn.onclick = () => {
+    	getData();
+    }
+
+
+    // 创建数据库
+    function openDB(VERSION) {
+     	var request = indexedDB.open(DB_NAME, VERSION);
+	    request.onsuccess = function(event) {
+
+	    	console.log('数据库操作成功!  00000');
+	        db = event.target.result;
+	        // console.log(event.target === request); // true
+	        db.onsuccess = function(event) {
+	            console.log('数据库操作成功!');
+	        };
+	        db.onerror = function(event) {
+	            console.error('数据库操作发生错误！', event.target.errorCode);
+	        };
+	        console.log('打开数据库成功!');
+	    };
+	    request.onerror = function(event) {
+	        console.error('创建数据库出错');
+	        console.error('error code:', event.target.errorCode);
+	    };
+	    request.onupgradeneeded = function(event) {
+	        // 更新对象存储空间和索引 .... 
+	        console.error('更新对象存储空间和索引 ....');
+
+	  //       db = event.target.result;
+			// var objectStore;
+			// if (!db.objectStoreNames.contains('person')) {
+			//     objectStore = db.createObjectStore('person', { keyPath: 'id' });
+			// }
+	    };
+    }
+    	
+
+
+    // 增加数据
+    function addMsg() {
+    	var request = db.transaction(['person'], 'readwrite')
+		    .objectStore('person')
+		    .add({ id: 'dandan', name: '张三', age: 24, email: 'zhangsan@example.com' });
+
+		  request.onsuccess = function (event) {
+		    console.log('数据写入成功', request.result);
+		  };
+
+		  request.onerror = function (event) {
+		    console.log('数据写入失败');
+		  }
+    }
+
+    // 更新数据
+    function update() {
+	  var request = db.transaction(['person'], 'readwrite')
+	    .objectStore('person')
+	    .put({ id: 'dandan', name: '丹丹', age: 35, email: 'lisi@example.com' });
+
+	  request.onsuccess = function (event) {
+	    console.log('数据更新成功', request.result);
+	  };
+
+	  request.onerror = function (event) {
+	    console.log('数据更新失败');
+	  }
+	}
+
+	// 删除数据
+	function remove() {
+	  var request = db.transaction(['person'], 'readwrite')
+	    .objectStore('person')
+	    .delete('dandan');
+
+	  request.onsuccess = function (event) {
+	    console.log('数据删除成功');
+	  };
+	}
+
+	// 普通的 - 查找数据
+	// objectStore.get()方法用于读取数据，参数是主键的值
+	function getData() {
+		var transaction = db.transaction(['person'], 'readonly');
+		var objectStore = transaction.objectStore('person');
+
+		var request = objectStore.get('dandan');
+
+		request.onsuccess = function (e) {
+		  var result = e.target.result;
+		  if (result) {
+		    console.log('查询数据成功：', result);
+		  } else {
+		    console.log('查询数据失败');
+		  }
+		}
+	}
+
+	// 建立索引的目的是，可以通过索引拿到想要的数据；
+	// 默认情况下是 只能通过主键拿到数据的；
+
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
