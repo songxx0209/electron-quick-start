@@ -1,0 +1,37 @@
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+#root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.app-container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: lightblue;
+
+  display: flex;
+  flex-direction: row;
+}
+
+.chat-list {
+  width: 380px;
+  height: 100%;
+  overflow: hidden;
+  background: lightcoral;
+}
+
+.conversation-task {
+  flex: 1;
+  height: 100%;
+  background: lightgreen;
+}

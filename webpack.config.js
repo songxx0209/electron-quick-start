@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+// const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 
 
@@ -52,5 +53,8 @@ module.exports = {
       template: path.join(__dirname, 'src/index.html'),
       title: 'Webpack-输出管理'
     }),
+    // new CopyWebpackPlugin([
+    //   { from: './renderer.js', to: './js' },
+    // ]),
   ],
 };

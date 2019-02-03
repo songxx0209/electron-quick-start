@@ -5,9 +5,9 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "dev": "webpack --mode development",
+    "dev-a": "webpack --mode development",
     "build": "webpack --mode production",
-    "dev-server": "webpack-dev-server   --open  --hot  --inline --mode development"
+    "dev": "webpack-dev-server   --open  --hot  --inline --mode development"
   },
   "repository": "https://github.com/electron/electron-quick-start",
   "keywords": [
@@ -27,6 +27,7 @@
     "@types/react-dom": "^16.0.11",
     "awesome-typescript-loader": "^5.2.1",
     "babel-loader": "^8.0.5",
+    "copy-webpack-plugin": "^4.6.0",
     "electron": "^3.0.4",
     "html-webpack-plugin": "^3.2.0",
     "node-sass": "^4.11.0",
