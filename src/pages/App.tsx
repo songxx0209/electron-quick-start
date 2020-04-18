@@ -11,7 +11,7 @@ export default class App extends React.Component<Props> {
         <div className="chat-list">
           <TopNav />
         </div>
-        <div className="conversation-task"></div>
+        <div className="conversation-task" />
       </div>
     );
   }
